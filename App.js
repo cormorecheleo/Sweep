@@ -7,106 +7,43 @@
  */
 
 import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {Button, Text} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Welcome from './components/WelcomeScreen';
+import Login from './components/Auth/LoginScreen';
+import Register from './components/Auth/RegisterScreen';
+import Home from './components/Home/HomeScreen';
+import Account from './components/Account/AccountScreen';
+import AddFriends from './components/Friends/AddFriendsScreen';
+import MapScreen from './components/Map/MapScreen';
+import BasketTeam from './components/Basket/TeamScreen';
+import BasketMatch from './components/Basket/Match';
+import Profile from './components/Profile/ProfileScreen';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const Stack = createNativeStackNavigator();
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
+const App = () => {
+    return(
+      <NavigationContainer>
+        <Stack.Navigator>
+
+          <Stack.Screen name="Welcome" component={Welcome} options={{headerShown:false}}/>
+          <Stack.Screen name="Login" component={Login}/>
+          <Stack.Screen name="Register" component={Register}/>
+          <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
+          <Stack.Screen name="Account" component={Account}/>
+          <Stack.Screen name="Ajouter amis" component={AddFriends}/>
+          <Stack.Screen name="Carte" component={MapScreen}/>
+          <Stack.Screen name='BasketTeam' component={BasketTeam}/>
+          <Stack.Screen name='basketMatch' component={BasketMatch} options={{headerBackVisible: true, headerTitle:'Match'}}/>
+          <Stack.Screen name='profile' component={Profile}/>
+
+
+
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
 };
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;

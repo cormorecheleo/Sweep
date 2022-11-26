@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
         fontSize:20,
         fontWeight:"bold"
     },
+    loadingView:{
+        flex:1,
+        justifyContent:"center",
+        alignItems:"center"
+    },
     Button:{
         alignItems:"center",
         marginTop:20,

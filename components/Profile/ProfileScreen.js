@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Button, Alert, TouchableOpacity } from "react-native";
+import { View, Text, Button, Alert, TouchableOpacity, ActivityIndicator } from "react-native";
 import { Avatar } from "react-native-elements";
 import styles from "./Style";
 
@@ -17,7 +17,12 @@ export default function Profile({ route }) {
     const displayProfile = () => {
 
         if (!profile) {
-            return (<View><Text>Loading !!!</Text></View>)
+            return (
+                <View style={styles.loadingView}>
+                    <ActivityIndicator size="large" />
+                    <Text >Loading</Text>
+                </View>
+            );
         } else {
             return (
                 <View>
@@ -46,7 +51,7 @@ export default function Profile({ route }) {
                     <View>
                         <TouchableOpacity style={[followButton === "Follow" ? styles.followButton : styles.unfollowButton, styles.Button]} onPress={() => handleFollowButton()}>
                             <Text style={followButton === "Follow" ? styles.followText : styles.unfollowText}>{followButton}</Text>
-                            </TouchableOpacity>
+                        </TouchableOpacity>
                     </View>
                 </View>
             )
@@ -64,7 +69,7 @@ export default function Profile({ route }) {
                 },
                 {
                     text: "Unfollow",
-                    style:"destructive",
+                    style: "destructive",
                     onPress: () => unfollowHandle()
                 }
             ]
@@ -72,9 +77,9 @@ export default function Profile({ route }) {
     }
 
     const handleFollowButton = () => {
-        if(isFollowing){
+        if (isFollowing) {
             unfollowAlert();
-        }else{
+        } else {
             followHandle();
         }
     }

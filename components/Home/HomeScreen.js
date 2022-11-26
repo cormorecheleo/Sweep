@@ -16,7 +16,7 @@ import Dashboard from "./Dashboard";
 
 export default function HomeScreen({route, navigation}){
     const {user} = route.params;
-    //console.log("HOME SCREEN ----> ", user);
+    console.log("HOME SCREEN ----> ", user);
     const Tab= createBottomTabNavigator();
     return(
         <Tab.Navigator>
@@ -53,6 +53,7 @@ export default function HomeScreen({route, navigation}){
                 )
             }}/>
             <Tab.Screen name="Account" component={Account} initialParams={{ user: user}} options={{
+                unmountOnBlur:true,
                 tabBarIcon: ({ color }) => (
                     <Text>Account icon</Text>
                     //<MaterialCommunityIcons name="car" color={color} size={26} />

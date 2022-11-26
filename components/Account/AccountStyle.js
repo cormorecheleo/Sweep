@@ -6,14 +6,42 @@ const styles = StyleSheet.create({
     container:{
         width:"100%",
         height:"100%",
+        alignItems:"center",
         //backgroundColor:"red",
     },
     logoView:{
-        width:"35%",
+        width:"75%",
         height:"20%",
-        marginLeft:"auto",
-        marginRight:"auto",
         marginTop:"3%"
+    },
+    usernameView:{
+        alignItems:"center",
+        marginTop:10
+    },
+    borderTop:{
+        borderTopWidth:1,
+        width:"100%",
+        borderTopColor:"grey",
+        paddingTop:"3%",
+    },
+    borderBottom:{
+        borderBottomWidth:1,
+        width:"100%",
+        borderBottomColor:"grey",
+    },
+    avatar:{
+        alignItems:"center",
+        width:"100%",
+    },
+    test:{
+        width:"100%",
+        height:"20%",
+        backgroundColor:"red"
+    },
+    logoutView:{
+        position:"absolute",
+        right:0,
+        padding:5
     },
     logoBorder:{
         flex:1,
@@ -61,12 +89,6 @@ const styles = StyleSheet.create({
         fontWeight:"bold",
         margin:15,
     },
-    logout: {
-        margin:15,
-    },
-    logoutButton: {
-        margin:20,
-    },
     lightView:{
         backgroundColor:"white"
     },
@@ -94,6 +116,21 @@ const styles = StyleSheet.create({
         fontSize:20,
         fontWeight:"bold",
         textAlign:"center"
+    },
+    followView:{
+        flexDirection:"row",
+        justifyContent:"space-around",
+        marginTop:"4%"
+    },
+    followNumber:{
+        textAlign:"center",
+        fontSize:20,
+        fontWeight:"bold"
+    },
+    loadingView:{
+        flex:1,
+        justifyContent:"center",
+        alignItems:"center"
     }
 
 })
